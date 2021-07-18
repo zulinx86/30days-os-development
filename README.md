@@ -37,3 +37,15 @@ nasm --version
 - QEMU emulator version 6.0.0
 - GNU Make 3.81
 - NASM version 2.15.05
+
+## 変更点一覧
+|変更前 (nask)|変更後 (nasm)|コメント・説明|
+|:--|:--|:--|
+|`RESB 18`|`TIMES 18 DB 0`|`RESB` を使うと警告が出ます。|
+|`RESB 0x7dfe-$`|`TIMES 0x1fe-($-$$) DB 0`||
+
+
+## 参考文献
+- [tools/nask - hrb-wiki](http://hrb.osask.jp/wiki/?tools/nask)
+- [『30日でできる！OS自作入門』を macOS Catalina で実行する - Qiita](https://qiita.com/noanoa07/items/8828c37c2e286522c7ee)
+- [noanoa07/myHariboteOS: 『30日でできる！OS自作入門』 for macOS Catalina](https://github.com/noanoa07/myHariboteOS)
