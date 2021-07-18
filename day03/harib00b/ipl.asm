@@ -46,7 +46,7 @@ entry:
 	; Read sectors
 	MOV	AX,0x0820
 	MOV	ES,AX		; segment for output buffer
-	MOV	CH,0		; cilinder (0 - 79)
+	MOV	CH,0		; cylinder (0 - 79)
 	MOV	DH,0		; head (0 - 1)
 	MOV	CL,2		; sector (1 - 18)
 
