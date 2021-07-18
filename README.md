@@ -20,9 +20,10 @@ nask 自体は、nasm の文法の多くを真似て、自動最適化能力を�
 - [QEMU](https://www.qemu.org/): 作成した OS の起動実験用のエミュレータ
 - [GNU Make](https://www.gnu.org/software/make/): コンパイル作業を自動化するツール
 - [NASM](https://www.nasm.us/): nask の代わりに使用するアセンブラ
+- [mtools](https://www.gnu.org/software/mtools/): edimg の代わりに使用するフロッピーディスク用のイメージ作成ツール
 
 ```
-brew install qemu make nasm
+brew install qemu make nasm mtools
 ```
 
 バージョンが表示されていれば、インストールできています。
@@ -30,6 +31,7 @@ brew install qemu make nasm
 qemu-system-i386 --version
 make --version
 nasm --version
+mtools --version
 ```
 
 ### 動作確認環境
@@ -37,6 +39,7 @@ nasm --version
 - QEMU emulator version 6.0.0
 - GNU Make 3.81
 - NASM version 2.15.05
+- mtools (GNU mtools) 4.0.31
 
 ## 変更点一覧
 |変更前 (nask)|変更後 (nasm)|コメント・説明|
