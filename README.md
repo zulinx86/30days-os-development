@@ -19,12 +19,21 @@ nask 自体は、nasm の文法の多くを真似て、自動最適化能力を�
 - [Hex Friend](https://apps.apple.com/jp/app/hex-fiend/id1342896380): バイナリエディタ
 - [QEMU](https://www.qemu.org/): 作成した OS の起動実験用のエミュレータ
 - [GNU Make](https://www.gnu.org/software/make/): コンパイル作業を自動化するツール
+- [NASM](https://www.nasm.us/): nask の代わりに使用するアセンブラ
 
 ```
-brew install qemu make
+brew install qemu make nasm
+```
+
+バージョンが表示されていれば、インストールできています。
+```
+qemu-system-i386 --version
+make --version
+nasm --version
 ```
 
 ### 動作確認環境
 - macOS Big Sur 11.3.1
 - QEMU emulator version 6.0.0
 - GNU Make 3.81
+- NASM version 2.15.05
