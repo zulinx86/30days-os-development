@@ -65,6 +65,10 @@ i386-elf-gcc --version
 リンカスクリプトは、[『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html#hrb) に紹介されていたものを、そのまま使用しています。
 
 
+## フォントファイル
+[『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html) より変換ずみの hankaku.c を使用しました。
+
+
 ## 参考文献
 - [tools/nask - hrb-wiki](http://hrb.osask.jp/wiki/?tools/nask)
 - [『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html#hrb)
