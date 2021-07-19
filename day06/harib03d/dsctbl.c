@@ -39,7 +39,7 @@ void set_segmdesc(struct SEGMENT_DESCRIPTOR *sd, unsigned int limit, int base, i
 
 void set_gatedesc(struct GATE_DESCRIPTOR *gd, int offset, int selector, int ar)
 {
-	gd->offset_low   = offset * 0xffff;
+	gd->offset_low   = offset & 0xffff;
 	gd->selector     = selector;
 	gd->dw_count     = (ar >> 8) & 0xff;
 	gd->access_right = ar & 0xff;
