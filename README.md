@@ -69,8 +69,18 @@ i386-elf-gcc --version
 [『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html) より変換ずみの hankaku.c を使用しました。
 
 
+## sprintf
+標準ライブラリを使用しないようにするため、[sprintfを実装する | OS自作入門 5日目-2 【Linux】 | サラリーマンがハッカーを真剣に目指す](http://bttb.s1.valueserver.jp/wordpress/blog/2017/12/17/makeos-5-2/) より sprintf 関数の実装をベースに使用しました。
+
+上記の実装に加えて、以下の機能を追加しています。
+- `%X`(16 進数表示の際のアルファベットの大文字表記) への対応
+- 文字数指定
+- ゼロパディング
+
+
 ## 参考文献
 - [tools/nask - hrb-wiki](http://hrb.osask.jp/wiki/?tools/nask)
 - [『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html#hrb)
 - [『30日でできる！OS自作入門』を macOS Catalina で実行する - Qiita](https://qiita.com/noanoa07/items/8828c37c2e286522c7ee)
 - [noanoa07/myHariboteOS: 『30日でできる！OS自作入門』 for macOS Catalina](https://github.com/noanoa07/myHariboteOS)
+- [sprintfを実装する | OS自作入門 5日目-2 【Linux】 | サラリーマンがハッカーを真剣に目指す](http://bttb.s1.valueserver.jp/wordpress/blog/2017/12/17/makeos-5-2/)
