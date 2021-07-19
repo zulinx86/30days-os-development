@@ -1,0 +1,6 @@
+| START       | END         | DESCRIPTION
+|-------------|-------------|-----------------------------
+| 0x0000_7C00 | 0x0000_7DFF | IPL
+| 0x0000_8000 | 0x0003_4FFF | Disk cache
+| 0x0010_0000 | 0x0012_CFFF | Disk cache
+| 0x0028_0000 |             | bootpack
