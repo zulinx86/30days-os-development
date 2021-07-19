@@ -1,5 +1,5 @@
 OBJS_BOOTPACK = bootpack.obj nasmfunc.obj hankaku.obj mystdio.obj graphic.obj dsctbl.obj int.obj
-HDRS_BOOTPACK = mystdio.h
+HDRS_BOOTPACK = mystdio.h bootpack.h
 
 default:
 	make img
