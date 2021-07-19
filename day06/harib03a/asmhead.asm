@@ -124,4 +124,5 @@ GDTR0:
 		DW		8*3-1
 		DW		GDT0
 
+		ALIGNB	16
 bootpack:
