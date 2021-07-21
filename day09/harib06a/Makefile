@@ -1,4 +1,4 @@
-OBJS_BOOTPACK = bootpack.obj nasmfunc.obj hankaku.obj mystdio.obj graphic.obj dsctbl.obj int.obj fifo.obj keyboard.c mouse.c
+OBJS_BOOTPACK = bootpack.obj nasmfunc.obj hankaku.obj mystdio.obj graphic.obj dsctbl.obj int.obj fifo.obj keyboard.obj mouse.obj
 HDRS_BOOTPACK = mystdio.h bootpack.h
 
 default:
