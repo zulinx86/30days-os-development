@@ -22,7 +22,7 @@ void HariMain(void)
 	fifo8_init(&keyfifo, 32, keybuf);
 	fifo8_init(&mousefifo, 128, mousebuf);
 	init_pit();
-	io_out8(PIC0_IMR, 0xf9); /* enable PIC1 and PS/2 keyboard (11111001) */
+	io_out8(PIC0_IMR, 0xf8); /* enable PIT, PIC1 and PS/2 keyboard (11111000) */
 	io_out8(PIC1_IMR, 0xef); /* enable PS/2 mouse (11101111) */
 
 	init_keyboard();
