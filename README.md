@@ -129,9 +129,9 @@ qemu-system-x86_64: warning: host doesn't support requested feature: CPUID.80000
 本にも記載されていますが、性能評価をする時は、やはり実機で試すのがベストだと思います。
 
 
-具体的には、以下で影響が発生します。
-- day13
-	- harib10c
+以下が該当箇所になります。
+- day13 (harib10c - harib10i)
+- day14 (harib11a - harib11c)
 
 
 ## 参考文献
