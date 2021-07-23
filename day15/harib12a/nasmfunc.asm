@@ -203,5 +203,5 @@ mts_fin:
 		RET
 
 taskswitch4:		; void taskswitch4(void);
-		JMP	4*8:0
+		JMP		4*8:0
 		RET
