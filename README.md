@@ -78,6 +78,62 @@ i386-elf-gcc --version
 - ゼロパディング
 
 
+## 性能測定
+性能測定をする際に、以下のようなスクリプトを実行します。
+```c
+struct FIFO32 fifo;
+int count = 0;
+
+// snipped
+
+for (;;) {
+	count++;
+
+	io_cli();
+	if (fifo32_status(&fifo) == 0) {
+		io_sti();
+	}
+	else {
+		// snipped
+	}
+}
+```
+
+QEMU でこのスクリプトを実行すると、割り込み処理が実施されない事象が発生しました。
+この事象は、複数のブログにて報告されていて、[OS自作入門してみた＆やりきった - ハラミTech](https://blog.haramishio.xyz/entry/hariboteos) に記載があるように、`-enable-kvm` を QEMU のオプションをつけると解決するようです。
+
+しかし、手元の環境では以下のようにエラーが出て利用できませんでした。
+```
+qemu-system-i386: invalid accelerator kvm
+qemu-system-x86_64: invalid accelerator kvm
+```
+
+[macos - How to enable KVM on a Mac for Qemu? - Stack Overflow](https://stackoverflow.com/questions/53778106/how-to-enable-kvm-on-a-mac-for-qemu) によると、macOS 環境では代わりに `-accel hvf` を利用できるということでした。
+手元の環境で試してみたところ、`qemu-system-i386` では以下のエラーが出て利用できませんでした。
+```
+qemu-system-i386: -accel hvf: invalid accelerator hvf
+```
+一方で、`qemu-system-x86_64` の場合は、以下の警告が出ますが、とりあえずはプログラムが動いてくれました。
+```
+qemu-system-x86_64: warning: host doesn't support requested feature: CPUID.80000001H:ECX.svm [bit 2]
+```
+しかし、結局のところ、測定結果が実行ごとに大きく異なってしまい、性能測定の目的は果たすことができませんでした。
+
+`count++` と `io_cli()` の間に文字列表示の処理を入れることで、割り込み処理が正常に行われるようになったため、本リポジトリのコードでは、こちらの方法を使用していますが、実際のところ性能評価としては、あまり使い物になりませんでした。
+```
+		count++;
+		putfonts8_asc_sht(sht_back, 0, 112, COL8_FFFFFF, COL8_008484, " ", 1);
+		io_cli();
+```
+
+本にも記載されていますが、性能評価をする時は、やはり実機で試すのがベストだと思います。
+
+
+具体的には、以下で影響が発生します。
+- day13
+	- harib10c
+
+
 ## 参考文献
 - [tools/nask - hrb-wiki](http://hrb.osask.jp/wiki/?tools/nask)
 - [『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html#hrb)
