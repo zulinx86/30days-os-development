@@ -7,10 +7,11 @@ void HariMain(void)
 {
 	struct BOOTINFO *binfo = (struct BOOTINFO *) ADR_BOOTINFO;
 	struct FIFO8 timerfifo1, timerfifo2, timerfifo3;
-	char s[40], keybuf[32], mousebuf[128], timerbuf1[8], timerbuf2[8], timerbuf3[8];
+	char s[40];
+	unsigned char keybuf[32], mousebuf[128], timerbuf1[8], timerbuf2[8], timerbuf3[8];
 	struct TIMER *timer1, *timer2, *timer3;
 	int mx, my, i;
-	unsigned int memtotal, count = 0;
+	unsigned int memtotal;
 	struct MOUSE_DEC mdec;
 	struct MEMMAN *memman = (struct MEMMAN *) MEMMAN_ADDR;
 	struct SHTCTL *shtctl;

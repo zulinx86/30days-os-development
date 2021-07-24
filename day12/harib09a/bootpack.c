@@ -6,7 +6,8 @@ void make_window8(unsigned char *buf, int xsize, int ysize, char *title);
 void HariMain(void)
 {
 	struct BOOTINFO *binfo = (struct BOOTINFO *) ADR_BOOTINFO;
-	char s[40], keybuf[32], mousebuf[128];
+	char s[40];
+	unsigned char keybuf[32], mousebuf[128];
 	int mx, my, i;
 	unsigned int memtotal, count = 0;
 	struct MOUSE_DEC mdec;

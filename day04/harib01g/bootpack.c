@@ -27,12 +27,11 @@ void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, i
 
 void HariMain(void)
 {
-	int i;
-	char *p;
+	unsigned char *p;
 
 	init_palette();
 
-	p = (char *)0xa0000;
+	p = (unsigned char *)0xa0000;
 
 	boxfill8(p, 320, COL8_FF0000,  20,  20, 120, 120);
 	boxfill8(p, 320, COL8_00FF00,  70,  50, 170, 150);

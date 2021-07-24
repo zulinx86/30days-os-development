@@ -5,7 +5,8 @@
 void HariMain(void)
 {
 	struct BOOTINFO *binfo = (struct BOOTINFO *) ADR_BOOTINFO;
-	char s[40], keybuf[32], mousebuf[128];
+	char s[40];
+	unsigned char keybuf[32], mousebuf[128];
 	int mx, my, i;
 	unsigned int memtotal;
 	struct MOUSE_DEC mdec;

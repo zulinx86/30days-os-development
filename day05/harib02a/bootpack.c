@@ -7,7 +7,7 @@ void io_store_eflags(int eflags);
 void init_palette(void);
 void set_palette(int start, int end, unsigned char *rgb);
 void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, int x1, int y1);
-void init_screen(char *vram, int x, int y);
+void init_screen(unsigned char *vram, int x, int y);
 
 #define COL8_000000	0
 #define COL8_FF0000	1
@@ -28,7 +28,7 @@ void init_screen(char *vram, int x, int y);
 
 void HariMain(void)
 {
-	char *vram;
+	unsigned char *vram;
 	int xsize, ysize;
 	short *binfo_scrnx, *binfo_scrny;
 	int *binfo_vram;
@@ -39,7 +39,7 @@ void HariMain(void)
 	binfo_vram = (int *) 0x0ff8;
 	xsize = *binfo_scrnx;
 	ysize = *binfo_scrny;
-	vram = (char *) *binfo_vram;
+	vram = (unsigned char *) *binfo_vram;
 
 	init_screen(vram, xsize, ysize);
 
@@ -98,7 +98,7 @@ void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, i
 	return;
 }
 
-void init_screen(char *vram, int x, int y)
+void init_screen(unsigned char *vram, int x, int y)
 {
 
 	boxfill8(vram, x, COL8_008484,      0,      0, x -  1, y - 29);

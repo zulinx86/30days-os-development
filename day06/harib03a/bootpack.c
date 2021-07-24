@@ -3,10 +3,10 @@
 void io_hlt(void);
 
 void init_palette(void);
-void init_screen(char *vram, int x, int y);
-void putfonts8_asc(char *vram, int xsize, int x, int y, char c, unsigned char *s);
+void init_screen(unsigned char *vram, int x, int y);
+void putfonts8_asc(unsigned char *vram, int xsize, int x, int y, char c, char *s);
 void init_mouse_cursor8(char *mouse, char bc);
-void putblock8_8(char *vram, int vxsize, int pxsize, int pysize, int px0, int py0, char *buf, int bxsize);
+void putblock8_8(unsigned char *vram, int vxsize, int pxsize, int pysize, int px0, int py0, char *buf, int bxsize);
 
 #define COL8_000000		0
 #define COL8_FF0000		1
@@ -28,7 +28,7 @@ void putblock8_8(char *vram, int vxsize, int pxsize, int pysize, int px0, int py
 struct BOOTINFO {
 	char cyls, leds, vmode, reserve;
 	short scrnx, scrny;
-	char *vram;
+	unsigned char *vram;
 };
 
 void init_gdtidt(void);

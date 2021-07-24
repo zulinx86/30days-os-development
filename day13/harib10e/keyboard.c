@@ -4,7 +4,6 @@ struct FIFO8 keyfifo;
 
 void inthandler21(int *esp)
 {
-	struct BOOTINFO *binfo = (struct BOOTINFO *) ADR_BOOTINFO;
 	unsigned char data;
 	io_out8(PIC0_OCW2, 0x61); /* notify PIC of completion of IRQ-01 reception */
 	data = io_in8(PORT_KEYDAT);
