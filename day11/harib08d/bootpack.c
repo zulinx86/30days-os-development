@@ -1,20 +1,19 @@
 #include "mystdio.h"
 #include "bootpack.h"
 
-void make_window8(unsigned char *buf, int xsize, int ysize, char *title);
+void make_window8(char *buf, int xsize, int ysize, char *title);
 
 void HariMain(void)
 {
 	struct BOOTINFO *binfo = (struct BOOTINFO *) ADR_BOOTINFO;
-	char s[40];
-	unsigned char keybuf[32], mousebuf[128];
+	char s[40], keybuf[32], mousebuf[128];
 	int mx, my, i;
 	unsigned int memtotal;
 	struct MOUSE_DEC mdec;
 	struct MEMMAN *memman = (struct MEMMAN *) MEMMAN_ADDR;
 	struct SHTCTL *shtctl;
 	struct SHEET *sht_back, *sht_mouse, *sht_win;
-	unsigned char *buf_back, buf_mouse[256], *buf_win;
+	char *buf_back, buf_mouse[256], *buf_win;
 
 	init_gdtidt();
 	init_pic();
@@ -37,8 +36,8 @@ void HariMain(void)
 	sht_back = sheet_alloc(shtctl);
 	sht_mouse = sheet_alloc(shtctl);
 	sht_win = sheet_alloc(shtctl);
-	buf_back = (unsigned char *) memman_alloc_4k(memman, binfo->scrnx * binfo->scrny);
-	buf_win = (unsigned char *) memman_alloc_4k(memman, 160 * 68);
+	buf_back = (char *) memman_alloc_4k(memman, binfo->scrnx * binfo->scrny);
+	buf_win = (char *) memman_alloc_4k(memman, 160 * 68);
 	sheet_setbuf(sht_back, buf_back, binfo->scrnx, binfo->scrny, -1);
 	sheet_setbuf(sht_mouse, buf_mouse, 16, 16, 99);
 	sheet_setbuf(sht_win, buf_win, 160, 68, -1);
@@ -105,7 +104,7 @@ void HariMain(void)
 	}
 }
 
-void make_window8(unsigned char *buf, int xsize, int ysize, char *title)
+void make_window8(char *buf, int xsize, int ysize, char *title)
 {
 	static char closebtn[14][16] = {
 		"OOOOOOOOOOOOOOO@",

@@ -3,7 +3,7 @@
 #define SHEET_UNUSE	0
 #define SHEET_USE	1
 
-struct SHTCTL *shtctl_init(struct MEMMAN *memman, unsigned char *vram, int xsize, int ysize)
+struct SHTCTL *shtctl_init(struct MEMMAN *memman, char *vram, int xsize, int ysize)
 {
 	struct SHTCTL *ctl;
 	int i;
@@ -38,7 +38,7 @@ struct SHEET *sheet_alloc(struct SHTCTL *ctl)
 	return 0; /* no available sheets */
 }
 
-void sheet_setbuf(struct SHEET *sht, unsigned char *buf, int xsize, int ysize, int col_inv)
+void sheet_setbuf(struct SHEET *sht, char *buf, int xsize, int ysize, int col_inv)
 {
 	sht->buf = buf;
 	sht->bxsize = xsize;
@@ -95,7 +95,7 @@ void sheet_updown(struct SHTCTL *ctl, struct SHEET *sht, int height)
 void sheet_refresh(struct SHTCTL *ctl)
 {
 	int h, bx, by, vx, vy;
-	unsigned char *buf, c, *vram = ctl->vram;
+	char *buf, c, *vram = ctl->vram;
 	struct SHEET *sht;
 
 	for (h = 0; h <= ctl->top; h++) {

@@ -6,7 +6,7 @@ void io_store_eflags(int eflags);
 
 void init_palette(void);
 void set_palette(int start, int end, unsigned char *rgb);
-void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, int x1, int y1);
+void boxfill8(char *vram, int xsize, char c, int x0, int y0, int x1, int y1);
 
 #define COL8_000000	0
 #define COL8_FF0000	1
@@ -98,7 +98,7 @@ void set_palette(int start, int end, unsigned char *rgb)
 	return;
 }
 
-void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, int x1, int y1)
+void boxfill8(char *vram, int xsize, char c, int x0, int y0, int x1, int y1)
 {
 	int x, y;
 	for (y = y0; y <= y1; ++y) 

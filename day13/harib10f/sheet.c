@@ -3,7 +3,7 @@
 #define SHEET_UNUSE	0
 #define SHEET_USE	1
 
-struct SHTCTL *shtctl_init(struct MEMMAN *memman, unsigned char *vram, int xsize, int ysize)
+struct SHTCTL *shtctl_init(struct MEMMAN *memman, char *vram, int xsize, int ysize)
 {
 	struct SHTCTL *ctl;
 	int i;
@@ -11,7 +11,7 @@ struct SHTCTL *shtctl_init(struct MEMMAN *memman, unsigned char *vram, int xsize
 	ctl = (struct SHTCTL *) memman_alloc_4k(memman, sizeof(struct SHTCTL));
 	if (ctl == 0) goto err;
 
-	ctl->map = (unsigned char *) memman_alloc_4k(memman, xsize * ysize);
+	ctl->map = (char *) memman_alloc_4k(memman, xsize * ysize);
 	if (ctl->map == 0) goto err;
 
 	ctl->vram = vram;
@@ -42,7 +42,7 @@ struct SHEET *sheet_alloc(struct SHTCTL *ctl)
 	return 0; /* no available sheets */
 }
 
-void sheet_setbuf(struct SHEET *sht, unsigned char *buf, int xsize, int ysize, int col_inv)
+void sheet_setbuf(struct SHEET *sht, char *buf, int xsize, int ysize, int col_inv)
 {
 	sht->buf = buf;
 	sht->bxsize = xsize;
@@ -54,7 +54,7 @@ void sheet_setbuf(struct SHEET *sht, unsigned char *buf, int xsize, int ysize, i
 void sheet_refreshmap(struct SHTCTL *ctl, int vx0, int vy0, int vx1, int vy1, int h0)
 {
 	int h, bx, by, vx, vy, bx0, by0, bx1, by1;
-	unsigned char *buf, sid, *map = ctl->map;
+	char *buf, sid, *map = ctl->map;
 	struct SHEET *sht;
 
 	if (vx0 < 0) vx0 = 0;
@@ -92,7 +92,7 @@ void sheet_refreshmap(struct SHTCTL *ctl, int vx0, int vy0, int vx1, int vy1, in
 void sheet_refreshsub(struct SHTCTL *ctl, int vx0, int vy0, int vx1, int vy1, int h0, int h1)
 {
 	int h, bx, by, vx, vy, bx0, by0, bx1, by1;
-	unsigned char *buf, *vram = ctl->vram, *map = ctl->map, sid;	
+	char *buf, *vram = ctl->vram, *map = ctl->map, sid;	
 	struct SHEET *sht;
 
 	if (vx0 < 0) vx0 = 0;

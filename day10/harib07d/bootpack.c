@@ -5,15 +5,14 @@
 void HariMain(void)
 {
 	struct BOOTINFO *binfo = (struct BOOTINFO *) ADR_BOOTINFO;
-	char s[40];
-	unsigned char keybuf[32], mousebuf[128];
+	char s[40], keybuf[32], mousebuf[128];
 	int mx, my, i;
 	unsigned int memtotal;
 	struct MOUSE_DEC mdec;
 	struct MEMMAN *memman = (struct MEMMAN *) MEMMAN_ADDR;
 	struct SHTCTL *shtctl;
 	struct SHEET *sht_back, *sht_mouse;
-	unsigned char *buf_back, buf_mouse[256];
+	char *buf_back, buf_mouse[256];
 
 	init_gdtidt();
 	init_pic();
@@ -35,7 +34,7 @@ void HariMain(void)
 	shtctl = shtctl_init(memman, binfo->vram, binfo->scrnx, binfo->scrny);
 	sht_back = sheet_alloc(shtctl);
 	sht_mouse = sheet_alloc(shtctl);
-	buf_back = (unsigned char *) memman_alloc_4k(memman, binfo->scrnx * binfo->scrny);
+	buf_back = (char *) memman_alloc_4k(memman, binfo->scrnx * binfo->scrny);
 	sheet_setbuf(sht_back, buf_back, binfo->scrnx, binfo->scrny, -1);
 	sheet_setbuf(sht_mouse, buf_mouse, 16, 16, 99);
 	init_screen(buf_back, binfo->scrnx, binfo->scrny);

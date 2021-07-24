@@ -6,7 +6,7 @@ void io_store_eflags(int eflags);
 
 void init_palette(void);
 void set_palette(int start, int end, unsigned char *rgb);
-void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, int x1, int y1);
+void boxfill8(char *vram, int xsize, char c, int x0, int y0, int x1, int y1);
 
 #define COL8_000000	0
 #define COL8_FF0000	1
@@ -27,11 +27,11 @@ void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, i
 
 void HariMain(void)
 {
-	unsigned char *p;
+	char *p;
 
 	init_palette();
 
-	p = (unsigned char *)0xa0000;
+	p = (char *)0xa0000;
 
 	boxfill8(p, 320, COL8_FF0000,  20,  20, 120, 120);
 	boxfill8(p, 320, COL8_00FF00,  70,  50, 170, 150);
@@ -83,7 +83,7 @@ void set_palette(int start, int end, unsigned char *rgb)
 	return;
 }
 
-void boxfill8(unsigned char *vram, int xsize, unsigned char c, int x0, int y0, int x1, int y1)
+void boxfill8(char *vram, int xsize, char c, int x0, int y0, int x1, int y1)
 {
 	int x, y;
 	for (y = y0; y <= y1; ++y) 
