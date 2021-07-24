@@ -14,7 +14,7 @@ nasmfunc.obj: nasmfunc.asm
 	nasm -f elf32 -o nasmfunc.obj -l nasmfunc.lst nasmfunc.asm
 
 %.obj: %.c
-	i386-elf-gcc -c -march=i486 -m32 -nostdlib -O0 -o $@ $<
+	i386-elf-gcc -c -march=i486 -m32 -nostdlib -o $@ $<
 
 bootpack.hrb: $(OBJS_BOOTPACK) $(HDRS_BOOTPACK) hrb.ld
 	i386-elf-gcc -march=i486 -m32 -nostdlib -T hrb.ld -o bootpack.hrb $(OBJS_BOOTPACK)
