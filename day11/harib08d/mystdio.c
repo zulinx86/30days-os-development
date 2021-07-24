@@ -96,7 +96,7 @@ int hex2asc(char *str, int dec, int len, int zero, int upper) {
 
 void mysprintf(char *str, char *fmt, ...) {
 	va_list args;
-	int i, len, zero = 0;
+	int len, zero = 0;
 
 	va_start(args, fmt);
 
