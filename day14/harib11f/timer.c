@@ -90,7 +90,6 @@ void timer_settime(struct TIMER *timer, unsigned int timeout)
 
 void inthandler20(int *esp)
 {
-	int i;
 	struct TIMER *timer;
 	io_out8(PIC0_OCW2, 0x60); /* notify PIC of completion of IRQ-00 reception */
 	timerctl.count++;
