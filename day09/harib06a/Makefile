@@ -14,10 +14,10 @@ nasmfunc.obj: nasmfunc.asm
 	nasm -f elf32 -o nasmfunc.obj -l nasmfunc.lst nasmfunc.asm
 
 %.obj: %.c
-	i386-elf-gcc -c -march=i486 -m32 -nostdlib -o $@ $<
+	i386-elf-gcc -c -march=i486 -m32 -nostdlib -Wall -o $@ $<
 
 bootpack.hrb: $(OBJS_BOOTPACK) $(HDRS_BOOTPACK) hrb.ld
-	i386-elf-gcc -march=i486 -m32 -nostdlib -T hrb.ld -o bootpack.hrb $(OBJS_BOOTPACK)
+	i386-elf-gcc -march=i486 -m32 -nostdlib -Wall -T hrb.ld -o bootpack.hrb $(OBJS_BOOTPACK)
 
 haribote.sys: asmhead.bin bootpack.hrb
 	cat asmhead.bin bootpack.hrb > haribote.sys

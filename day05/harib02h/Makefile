@@ -11,7 +11,7 @@ nasmfunc.obj: nasmfunc.asm
 	nasm -f elf32 -o nasmfunc.obj -l nasmfunc.lst nasmfunc.asm
 
 bootpack.hrb: bootpack.c nasmfunc.obj hankaku.c mystdio.c hrb.ld
-	i386-elf-gcc -march=i486 -m32 -nostdlib -T hrb.ld -o bootpack.hrb bootpack.c nasmfunc.obj hankaku.c mystdio.c
+	i386-elf-gcc -march=i486 -m32 -nostdlib -Wall -T hrb.ld -o bootpack.hrb bootpack.c nasmfunc.obj hankaku.c mystdio.c
 
 haribote.sys: asmhead.bin bootpack.hrb
 	cat asmhead.bin bootpack.hrb > haribote.sys

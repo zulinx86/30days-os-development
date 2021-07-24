@@ -5,7 +5,7 @@ default:
 	nasm -o $@ -l $(<:.asm=.lst) $<
 
 bootpack.hrb: bootpack.c hrb.ld
-	i386-elf-gcc -march=i486 -m32 -nostdlib -T hrb.ld -o bootpack.hrb bootpack.c
+	i386-elf-gcc -march=i486 -m32 -nostdlib -Wall -T hrb.ld -o bootpack.hrb bootpack.c
 
 haribote.sys: asmhead.bin bootpack.hrb Makefile
 	cat asmhead.bin bootpack.hrb > haribote.sys
