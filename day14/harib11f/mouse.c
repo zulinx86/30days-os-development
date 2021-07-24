@@ -26,7 +26,7 @@ void enable_mouse(struct FIFO32 *fifo, int data0, struct MOUSE_DEC *mdec)
 	wait_KBC_sendready();
 	io_out8(PORT_KEYDAT, MOUSECMD_ENABLE);
 
-	mdec->phase - 0;
+	mdec->phase = 0;
 	return;	/* when it succeeds, ACK(0xfa) is sent */
 }
 
