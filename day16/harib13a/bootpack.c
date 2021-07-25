@@ -70,7 +70,7 @@ void HariMain(void)
 	init_mouse_cursor8(buf_mouse, 99);
 	make_window8(buf_win, 160, 52, "window");
 	make_textbox8(sht_win, 8, 28, 144, 16, COL8_FFFFFF);
-	cursor_x = 9;
+	cursor_x = 8;
 	cursor_c = COL8_FFFFFF;
 	sheet_slide(sht_back, 0, 0);
 	mx = (binfo->scrnx - 16) / 2;
@@ -120,7 +120,7 @@ void HariMain(void)
 					}
 				}
 
-				if (i == 256 + 0x0e && cursor_x > 16) {
+				if (i == 256 + 0x0e && cursor_x > 8) {
 					putfonts8_asc_sht(sht_win, cursor_x, 28, COL8_000000, COL8_FFFFFF, " ", 1);
 					cursor_x -= 8;
 				}
