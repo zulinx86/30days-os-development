@@ -230,7 +230,7 @@ int cons_newline(int cursor_y, struct SHEET *sheet);
 
 /* file.c */
 struct FILEINFO {
-	unsigned char name[8], ext[3], type;
+	char name[8], ext[3], type;
 	char reserve[10];
 	unsigned short time, date, clustno;
 	unsigned int size;
