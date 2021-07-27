@@ -57,4 +57,4 @@ run:
 	qemu-system-i386 -drive file=haribote.img,if=floppy,format=raw -boot a -m 32M
 
 clean:
-	rm -rf *.bin *.lst *.img *.sys *.obj *.hrb
+	rm -rf *.bin *.lst *.img *.sys *.obj *.hrb *.map
