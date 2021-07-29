@@ -1,0 +1,14 @@
+| START       | END         | Size                 | DESCRIPTION
+|-------------|-------------|------------------------------------------------------
+| 0x0000_7C00 | 0x0000_7DFF | 0x0000_0200 (512 B)  | IPL
+| 0x0000_8000 | 0x0003_4FFF | 0x0002_D000 (180 KB) | disk cache (10 cylinder)
+| 0x000a_0000 | 0x000b_FFFF | 0x0002_0000 (128 KB) | VRAM (320 x 200 x 8 bit color)
+| 0x0010_0000 | 0x0012_CFFF | 0x0002_D000 (180 KB) | disk cache
+| 0x0026_f800 | 0x0026_FFFF | 0x0000_0800 (2 KB)   | IDT
+| 0x0027_0000 | 0x0027_FFFF | 0x0001_0000 (64 KB)  | GDT
+| 0x0028_0000 | 0x002F_FFFF | 0x0008_0000 (512 KB) | bootpack
+| 0x0030_0000 | 0x0030_FFFF | 0x0001_0000 (64 KB)  | stack
+| 0x0031_0000 |             |                      | .data
+| 0x003C_0000 | 0x003C_7FFF | 0x0000_8000 (32 KB)  | memory manager
+| 0x003C_8000 |             |                      | free space
+| 0xFD00_0000 |             |                      | VRAM (VESA VIOS Extension)
