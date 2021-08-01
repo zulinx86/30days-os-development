@@ -150,13 +150,17 @@ void HariMain(void)
 			i = fifo32_get(&fifo);
 			io_sti();
 
+			if (key_win->flags == 0) {
+				key_win = shtctl->sheets[shtctl->top - 1];
+				cursor_c = keywin_on(key_win, sht_win, cursor_c);
+			}
+
 			if (256 <= i && i < 512) {
 				if (i < 256 + 0x80) {
-					if (key_shift == 0) {
+					if (key_shift == 0)
 						s[0] = keytable0[i - 256];
-					} else {
+					else
 						s[0] = keytable1[i - 256];
-					}
 				} else {
 					s[0] = 0;
 				}
@@ -186,7 +190,7 @@ void HariMain(void)
 							cursor_x += 8;
 						}
 					} else {
-						fifo32_put(&task_cons->fifo, s[0] + 256);
+						fifo32_put(&key_win->task->fifo, s[0] + 256);
 					}
 				}
 
@@ -197,12 +201,12 @@ void HariMain(void)
 							cursor_x -= 8;
 						}
 					} else {
-						fifo32_put(&task_cons->fifo, 8 + 256);
+						fifo32_put(&key_win->task->fifo, 8 + 256);
 					}
 				}
 
 				if (i == 256 + 0x1c) { /* enter */
-					if (key_win != sht_win) fifo32_put(&task_cons->fifo, 10 + 256);
+					if (key_win != sht_win) fifo32_put(&key_win->task->fifo, 10 + 256);
 				}
 
 				if (i == 256 + 0x0f) { /* tab */
