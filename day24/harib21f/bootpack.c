@@ -123,7 +123,7 @@ void HariMain(void)
 	*((int *) (task_cons->tss.esp + 8)) = memtotal;
 	task_run(task_cons, 2, 2);
 	sht_cons->task = task_cons;
-	sht_cons->flags |= SHEET_HAS_CURSOR;
+	sht_cons->flags |= SHEET_CURSOR;
 
 	sheet_slide(sht_back,   0,   0);
 	sheet_slide(sht_cons,  32,   4);
@@ -345,7 +345,7 @@ int keywin_off(struct SHEET *key_win, struct SHEET *sht_win, int cur_c, int cur_
 		cur_c = -1;
 		boxfill8(sht_win->buf, sht_win->bxsize, COL8_FFFFFF, cur_x, 28, cur_x + 7, 43);
 	} else {
-		if ((key_win->flags & SHEET_HAS_CURSOR) != 0)
+		if ((key_win->flags & SHEET_CURSOR) != 0)
 			fifo32_put(&key_win->task->fifo, 3); /* cursor off */
 	}
 	return cur_c;
@@ -357,7 +357,7 @@ int keywin_on(struct SHEET *key_win, struct SHEET *sht_win, int cur_c)
 	if (key_win == sht_win) {
 		cur_c = COL8_000000;
 	} else {
-		if ((key_win->flags & SHEET_HAS_CURSOR) != 0)
+		if ((key_win->flags & SHEET_CURSOR) != 0)
 			fifo32_put(&key_win->task->fifo, 2); /* cursor on */
 	}
 	return cur_c;

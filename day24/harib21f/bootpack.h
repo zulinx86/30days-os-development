@@ -148,10 +148,10 @@ int memman_free_4k(struct MEMMAN *man, unsigned int addr, unsigned int size);
 
 /* sheet.c */
 #define MAX_SHEETS	256
-#define SHEET_UNUSE			0x00
-#define SHEET_USE			0x01
-#define SHEET_APP			0x10
-#define SHEET_HAS_CURSOR	0x20
+#define SHEET_UNUSE		0x00
+#define SHEET_USE		0x01
+#define SHEET_APP		0x10
+#define SHEET_CURSOR	0x20
 struct SHEET {
 	char *buf;
 	int bxsize, bysize, vx0, vy0, col_inv, height, flags;
