@@ -161,7 +161,7 @@ void sheet_free(struct SHEET *sht);
 struct TIMER {
 	unsigned int timeout, flags;
 	struct FIFO32 *fifo;
-	unsigned char data;
+	int data;
 };
 struct TIMERCTL {
 	unsigned int count, next, using;

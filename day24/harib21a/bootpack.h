@@ -174,7 +174,7 @@ struct TIMER {
 	struct TIMER *next;
 	unsigned int timeout, flags;
 	struct FIFO32 *fifo;
-	unsigned char data;
+	int data;
 };
 struct TIMERCTL {
 	unsigned int count, next, using;
