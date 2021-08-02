@@ -62,8 +62,8 @@ i386-elf-gcc --version
 
 
 ## リンカスクリプト
-リンカスクリプトは、[『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html#hrb) に紹介されていたものを、そのまま使用しています。
-
+リンカスクリプトは、[『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html#hrb) に紹介されていたものを、ほぼそのまま使用しています。
+微修正した点は、.data セクションの位置です。
 
 ## フォントファイル
 [『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html) より変換ずみの hankaku.c を使用しました。
@@ -127,11 +127,6 @@ qemu-system-x86_64: warning: host doesn't support requested feature: CPUID.80000
 ```
 
 本にも記載されていますが、性能評価をする時は、やはり実機で試すのがベストだと思います。
-
-
-以下が該当箇所になります。
-- day13 (harib10c - harib10i)
-- day14 (harib11a - harib11c)
 
 
 ## 参考文献
