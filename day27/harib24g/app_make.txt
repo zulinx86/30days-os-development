@@ -1,7 +1,6 @@
 LIBAPIPATH := ../libapi/
 MYLIBPATH := ../mylib/
 MYLIBOBJS := $(MYLIBPATH)mystdio.obj $(MYLIBPATH)mystring.obj
-INCLUDEPATH := ../
 LINKERPATH := ../
 
 .PHONY: default
@@ -9,9 +8,9 @@ default:
 	make -r $(APP).hrb
 
 $(APP).obj: $(APP).c
-	i386-elf-gcc -c -march=i486 -m32 -nostdlib -Wall -I$(INCLUDEPATH) -I$(MYLIBPATH) -o $(APP).obj $(APP).c
+	i386-elf-gcc -c -march=i486 -m32 -nostdlib -Wall -I$(MYLIBPATH) -I$(LIBAPIPATH) -o $(APP).obj $(APP).c
 
-$(APP).hrb: $(APP).obj $(INCLUDEPATH)libapi.h $(LIBAPIPATH)libapi.a $(LINKERPATH)app.ld
+$(APP).hrb: $(APP).obj $(LIBAPIPATH)libapi.h $(LIBAPIPATH)libapi.a $(LINKERPATH)app.ld
 	i386-elf-gcc -march=i486 -m32 -nostdlib -T $(LINKERPATH)app.ld -o $(APP).hrb $(APP).obj $(MYLIBOBJS) -L$(LIBAPIPATH) -static -lapi
 
 .PHONY: clean
