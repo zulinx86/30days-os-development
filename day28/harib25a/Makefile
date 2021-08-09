@@ -8,6 +8,7 @@ default:
 
 .PHONY: img
 img:
+	make -C libapi
 	for APP in $(APPS); do make -C $$APP; done
 	make -r haribote.img
 
@@ -24,4 +25,5 @@ haribote.img: haribote/ipl10.bin haribote/haribote.sys $(APP_HRBS)
 .PHONY: clean
 clean:
 	for APP in $(APPS); do make -C $$APP clean; done
+	make -C libapi clean
 	rm -f *.img
