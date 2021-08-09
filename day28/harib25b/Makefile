@@ -11,6 +11,7 @@ img:
 	make -C libapi
 	make -C mylib
 	for APP in $(APPS); do make -C $$APP; done
+	make -C haribote
 	make -r haribote.img
 
 .PHONY: run
@@ -25,7 +26,8 @@ haribote.img: haribote/ipl10.bin haribote/haribote.sys $(APP_HRBS)
 
 .PHONY: clean
 clean:
-	for APP in $(APPS); do make -C $$APP clean; done
-	make -C libapi clean
-	make -C mylib clean
 	rm -f *.img
+	make -C haribote clean
+	for APP in $(APPS); do make -C $$APP clean; done
+	make -C mylib clean
+	make -C libapi clean
