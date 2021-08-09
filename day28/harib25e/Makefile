@@ -25,7 +25,6 @@ haribote.img: haribote/ipl10.bin haribote/haribote.sys $(APP_HRBS)
 	mcopy -i haribote.img $(APP_HRBS) ::
 	mcopy -i haribote.img haribote/ipl10.asm ::
 	mcopy -i haribote.img nihongo/nihongo.fnt ::
-	mcopy -i haribote.img hira.txt ::
 
 .PHONY: clean
 clean:
