@@ -71,13 +71,25 @@ i386-elf-gcc --version
 [『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html) より変換ずみの hankaku.c を使用しました。
 
 
-## sprintf
-標準ライブラリを使用しないようにするため、[sprintfを実装する | OS自作入門 5日目-2 【Linux】 | サラリーマンがハッカーを真剣に目指す](http://bttb.s1.valueserver.jp/wordpress/blog/2017/12/17/makeos-5-2/) より sprintf 関数の実装をベースに使用しました。
+## 標準ライブラリ
+i386-elf-gcc における標準ライブラリについては、以下のように記載がありました。
 
-上記の実装に加えて、以下の機能を追加しています。
+[How to include c standard library? · Issue #6 · nativeos/homebrew-i386-elf-toolchain](https://github.com/nativeos/homebrew-i386-elf-toolchain/issues/6) 
+> If you use the --sysroot flag when calling GCC, it will look for headers on ${sysroot}/usr/include, so GCC may actually be looking for stdio.h on usr/includes/usr/include/stdio.h. Check that file exists. Same for libraries.
+> 
+> Aside from that, not much. This compiler builds pure ELF binaries but makes no assumptions about a particular C library since there may not exist one at runtime (i.e. this compiler does not generate Linux executables or FreeBSD executables).
+> 
+> If you are looking into compiling Linux software from Mac, you should compile a Linux cross-compiler using something like crosstool to get i686-pc-linux-gnu-gcc or x86_64-pc-linux-gcc.
+> If you are looking into compiling pure ELF binaries, you should port newlib, musl, or another C runtime library, but I still don't have experience with this as I haven't advanced that much with my OS yet to have a standard library.
+
+以上を踏まえて、標準ライブラリは使用しない方針にしました。
+
+`sprintf()` に関しては、[sprintfを実装する | OS自作入門 5日目-2 【Linux】 | サラリーマンがハッカーを真剣に目指す](http://bttb.s1.valueserver.jp/wordpress/blog/2017/12/17/makeos-5-2/) を参考にし、以下の機能を追加しています。
 - `%X`(16 進数表示の際のアルファベットの大文字表記) への対応
 - 文字数指定
 - ゼロパディング
+
+`strcmp()` と `strncmp()` は、自前実装です。
 
 
 ## 性能測定
