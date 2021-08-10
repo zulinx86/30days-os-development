@@ -530,7 +530,7 @@ void hrb_api_linewin(struct SHEET *sht, int x0, int y0, int x1, int y1, int col)
 		if (x0 > x1) dx = -1024;
 		else dx = 1024;
 		if (y0 <= y1) dy = ((y1 - y0 + 1) << 10) / len;
-		else dy = (y1 - y0 - 1) << 10 / len;
+		else dy = ((y1 - y0 - 1) << 10) / len;
 	} else {
 		len = dy + 1;
 		if (y0 > y1) dy = -1024;
