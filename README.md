@@ -13,6 +13,7 @@ Bad CPU type in executable
 nask 自体は、nasm の文法の多くを真似て、自動最適化能力を高めたアセンブラということですので、最新の macOS でも利用できる nasm を使用する方法に置き換えようと考えました。
 
 とはいえ、そこまで難しくはなく、Linux 上で nasm を使って実現されている方々がブログを残されており、また C 言語になれば修正が必要な部分はほとんどありません。
+
 このリポジトリでは、これらのブログを参考に、macOS で「30日でできる！OS自作入門」を勉強するための環境構築やソースコードを、記録として残しておくことを目的としています。
 
 
@@ -63,6 +64,7 @@ i386-elf-gcc --version
 
 ## リンカスクリプト
 リンカスクリプトは、[『30日でできる！OS自作入門』のメモ](https://vanya.jp.net/os/haribote.html#hrb) に紹介されていたものを、ほぼそのまま使用しています。
+
 微修正した点は、.data セクションの位置です。
 
 ## フォントファイル
@@ -99,7 +101,8 @@ for (;;) {
 }
 ```
 
-QEMU でこのスクリプトを実行すると、割り込み処理が実施されない事象が発生しました。
+QEMU でこのスクリプトを実行すると、割り込み処理が実行されない事象が発生しました。
+
 この事象は、複数のブログにて報告されていて、[OS自作入門してみた＆やりきった - ハラミTech](https://blog.haramishio.xyz/entry/hariboteos) に記載があるように、`-enable-kvm` を QEMU のオプションをつけると解決するようです。
 
 しかし、手元の環境では以下のようにエラーが出て利用できませんでした。
@@ -109,6 +112,7 @@ qemu-system-x86_64: invalid accelerator kvm
 ```
 
 [macos - How to enable KVM on a Mac for Qemu? - Stack Overflow](https://stackoverflow.com/questions/53778106/how-to-enable-kvm-on-a-mac-for-qemu) によると、macOS 環境では代わりに `-accel hvf` を利用できるということでした。
+
 手元の環境で試してみたところ、`qemu-system-i386` では以下のエラーが出て利用できませんでした。
 ```
 qemu-system-i386: -accel hvf: invalid accelerator hvf
@@ -127,6 +131,14 @@ qemu-system-x86_64: warning: host doesn't support requested feature: CPUID.80000
 ```
 
 本にも記載されていますが、性能評価をする時は、やはり実機で試すのがベストだと思います。
+
+
+## ファイル圧縮
+Chapter 29 の harib26b にあるファイル圧縮には、対応していません。
+
+理由は `bim2bin` による tek2 / tek5 の圧縮方法が、一般的な圧縮形式ではないためです。
+
+`bim2bin` のソースコードは、[こちら](https://github.com/HariboteOS/tolsrc/blob/master/bim2bi4w/bim2bin.c) で確認できますので、どうしてもファイルを圧縮したい方は、参考にできるかと思います。
 
 
 ## 参考文献
