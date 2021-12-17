@@ -13,7 +13,7 @@ struct SHTCTL *shtctl_init(struct MEMMAN *memman, char *vram, int xsize, int ysi
 
 	ctl->map = (char *) memman_alloc_4k(memman, xsize * ysize);
 	if (ctl->map == 0) {
-		memman_free_4k(memman, (int) ctl, sizeof(struct SHTL));
+		memman_free_4k(memman, (int) ctl, sizeof(struct SHTCTL));
 		goto err;
 	}
 
